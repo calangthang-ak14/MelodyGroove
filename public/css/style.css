@@ -1,0 +1,46 @@
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+  }
+  
+  .song {
+    display: flex;
+    align-items: center; /* Đảm bảo các phần tử con căn giữa */
+    margin-bottom: 20px;
+    width: 100%; /* Chiều rộng của mỗi bài hát sẽ chiếm 100% của container */
+  }
+  
+  .song img {
+    width: 120px; /* Điều chỉnh kích thước ảnh theo ý muốn */
+    height: auto;
+    margin-right: 20px;
+    border-radius: 10px;
+  }
+  
+  .song ul {
+    list-style-type: none;
+    margin-right: 5px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .song li {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #li-elm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #title {
+    font-weight: bold;
+  }
+  
+  #author {
+    color: #606060;
+  }
+  
