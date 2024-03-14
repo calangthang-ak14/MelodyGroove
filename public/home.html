@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Search</title>
+</head>
+<body>
+    <h1>YouTube Search</h1>
+    <input type="text" id="searchInput" placeholder="Enter song name">
+    <button onclick="search()">Search</button>
+    <div id="searchResults"></div>
+
+    <script>
+        async function search() {
+            const query = document.getElementById('searchInput').value;
+            const response = await fetch(`/search?query=${encodeURIComponent(query)}`);
+            const data = await response.json();
+            let htmlContent = '<ul>';
+            data.forEach(video => {
+                htmlContent += `
+                    <li>
+                        <div>
+                            <img src="${video.thumbnail}" alt="${video.title}">
+                        </div>
+                        <div>
+                            <h3>${video.title}</h3>
+                            <p>Ngày đăng: ${video.date}</p>
+                        </div>
+                    </li>
+                `;
+            });
+            htmlContent += '</ul>';
+            document.getElementById('searchResults').innerHTML = htmlContent;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Song Search</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Song Search</h1>
+  <form action="/" method="GET">
+    <input type="text" name="query" placeholder="Enter song title">
+    <button type="submit">Search</button>
+  </form>
+  <div class="results">
+    <% if (videos.length > 0) { %>
+      <% videos.forEach(video => { %>
+        <% if (video.id.videoId){  %>
+          <a href="http://localhost:3000/play?url=https://www.youtube.com/watch?v=<%=video.id.videoId%>" target="_blank">
+        <% } else { %>
+          <a href="http://localhost:3000/play?url=https://www.youtube.com/watch?v=<%=video.id%>" target="_blank">
+        <% } %>
+            <div class="song">
+                <ul>
+                  <li>
+                      <img src="<%= video.snippet.thumbnails.medium.url %>" alt="<%= video.snippet.title %>">
+                      <div id="li-elm">
+                        <a id="title"><%= video.snippet.title%> - <%=video.id.videoId%></a>
+                        <a id="author">Author: <%= video.snippet.channelTitle %></a>
+                      </div>
+                  </li>   
+                </ul>                     
+            </div>
+          </a> 
+      <% }); %>
+    <% } else { %>
+      <p>No results found.</p>
+    <% } %>
+  </div>
+</body>
+</html>

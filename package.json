@@ -1,0 +1,31 @@
+{
+  "name": "soundhug",
+  "version": "21.6.2",
+  "description": "Music Streaming Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test app",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "server",
+    "nodejs",
+    "music",
+    "streaming"
+  ],
+  "author": "calangthang",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.3",
+    "googleapis": "^133.0.0",
+    "puppeteer": "^22.4.1",
+    "youtube-search": "^1.1.6",
+    "ytdl-core": "^4.11.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

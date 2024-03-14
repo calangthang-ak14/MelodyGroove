@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Search Results</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Search Results</h1>
+        
+        <form action="/search" method="GET">
+            <input type="text" name="query" placeholder="Enter your search query">
+            <button type="submit">Search</button>
+        </form>
+
+        <% if (results && results.length > 0) { %>
+            <ul class="results">
+                <% results.forEach(function(result) { %>
+                    <li class="result-item">
+                        <a href="<%= result.url %>"><img src="<%= result.thumbnail %>" alt="<%= result.title %>"></a>
+                        <h2><a href="<%= result.url %>"><%= result.title %></a></h2>
+                        <p><%= result.description %></p>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p class="no-results">No results found.</p>
+        <% } %>
+    </div>
+</body>
+</html>
