@@ -9,3 +9,38 @@ Database 📊: MongoDB <br>
 
 # Project Starting ⏱
 05/02/2024 💻
+
+# ALERT FOR SANG NGU ⚠️⚠️⚠️
+
+<b> USING: </b>
+
+```
+git pull
+```
+
+## API Reference
+
+<b> Get songs for homepage: </b>
+```http
+GET /api/music/
+```
+
+---------------------------------------
+
+<b> Detail song: </b>
+```http
+POST /api/music/song/
+```
+| Body | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Require**. id of song 
+
+---------------------------------------
+
+<b> Search songs: </b>
+```http
+POST /api/music/search
+```
+| Body | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `query`      | `string` | **Require**. Name of song 

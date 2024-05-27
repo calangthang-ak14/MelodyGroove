@@ -11,5 +11,6 @@ const initApi = (app) => {
 api.use(bodyParser.json());
 
 api.use('/users', require('../routers/users'))
+api.use('/music', require('../routers/music'))
 
 module.exports = initApi;

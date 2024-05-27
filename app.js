@@ -1,6 +1,7 @@
 const initApi = require('./apps/api/api');
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
 
 const connection = require('./apps/utils/connection/connection');
@@ -10,6 +11,8 @@ const app = express();
 connection();
 
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(express.static('public'));
 initApi(app);
 
 let port = 3000;
@@ -18,38 +21,50 @@ app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
 
+
 // const { google } = require('googleapis');
-// const bodyParser = require("body-parser");
-// const ytdl = require('ytdl-core');
-// const API_KEY = 'AIzaSyDWP5fLFGegEERs7uiKhnZUdy3ZIgbUJRk';
+// const express = require('express');
+// const bodyParser = require('body-parser'); 
+// const API_KEY = 'AIzaSyDWP5fLFGegEERs7uiKhnZUdy3ZIgbUJRk'; // Thay bằng API Key của bạn
+
 // const youtube = google.youtube({
 //   version: 'v3',
 //   auth: API_KEY,
 // });
 
-// app.set('view engine', 'ejs');
+// const app = express();
+// const PORT = 3000;
 
-// app.use(express.static('public'));
 // app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.static('public'));
 
-// async function getTrendingMusicVideos() {
+// app.get('/api/music', async (req, res) => {
 //   try {
-//     const response = await youtube.videos.list({ 
-//       part: 'snippet',
-//       chart: 'mostPopular',
-//       regionCode: 'VN',
-//       videoCategoryId: '10',
-//       maxResults: 50,
-//     });
+//     const [usResponse, vnResponse] = await Promise.all([
+//       youtube.videos.list({
+//         part: 'snippet,contentDetails',
+//         chart: 'mostPopular',
+//         regionCode: 'US', // Mã vùng Hoa Kỳ
+//         videoCategoryId: '10', // Music category ID
+//         maxResults: 5, // Số lượng video muốn lấy từ Hoa Kỳ
+//       }),
+//       youtube.videos.list({
+//         part: 'snippet,contentDetails',
+//         chart: 'mostPopular',
+//         regionCode: 'VN', // Mã vùng Việt Nam
+//         videoCategoryId: '10', // Music category ID
+//         maxResults: 5, // Số lượng video muốn lấy từ Việt Nam
+//       })
+//     ]);
 
-//     const videos = response.data.items;
-//     return videos;
+//     const combinedVideos = [...usResponse.data.items, ...vnResponse.data.items];
+//     res.json(combinedVideos);
 //   } catch (error) {
-//     console.error('Error fetching trending music videos:', error);
-//     return [];
+//     console.error('Error fetching music videos:', error);
+//     res.status(500).send('Error fetching music videos');
 //   }
-// }
+// });
+
 
 // async function searchSongs(query) {
 //   try {
@@ -68,20 +83,7 @@ app.listen(port, () => {
 //   }
 // }
 
-// app.get('/', async (req, res) => {
-//   const query = req.query.query || '';
-//   let videos = [];
-
-//   if (query === '') {
-//     videos = await getTrendingMusicVideos();
-//   } else {
-//     videos = await searchSongs(query);
-//   }
-
-//   res.render('index', { videos });
-// });
-
-// app.post('/search', async (req, res) => {
+// app.post('/api/search', async (req, res) => {
 //   try {
 //     const query = req.body.query || '';
 //     const videos = await searchSongs(query);
@@ -92,22 +94,6 @@ app.listen(port, () => {
 //   }
 // });
 
-// app.get('/play', async (req, res) => {
-//   try {
-//       const url = req.query.url;
-//       if (!url || !ytdl.validateURL(url)) {
-//           return res.status(400).send('Invalid YouTube URL');
-//       }
-      
-//       res.header('Content-Type', 'audio/mpeg');
-
-//       ytdl(url, { filter: 'audioonly' }).pipe(res);
-//   } catch (err) {
-//       console.error('Error:', err);
-//       res.status(500).send('Internal Server Error');
-//   }
-// });
-
-// app.listen(port, () => {
-//   console.log(`Server is running at http://localhost:${port}`);
+// app.listen(PORT, () => {
+//   console.log(`Server is running on http://localhost:${PORT}`);
 // });
