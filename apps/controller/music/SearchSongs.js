@@ -21,7 +21,7 @@ const SearchSongs = async (req, res) => {
   try {
     const query = req.body.query || '';
     const videos = await GetSongByName(query);
-    res.json(videos);
+    res.status(200).json(videos);
   } catch (error) {
     console.error('Error searching for songs:', error);
     res.status(500).json({ error: error.message });

@@ -20,7 +20,7 @@ const LoadHomePageData = async (req, res) => {
     ]);
 
     const combinedVideos = [...usResponse.data.items, ...vnResponse.data.items];
-    res.json(combinedVideos);
+    res.status(200).json(combinedVideos);
   } catch (error) {
     console.error('Error fetching music videos:', error);
     res.status(500).send('Error fetching music videos');

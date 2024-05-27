@@ -24,7 +24,7 @@ const DetailSong = async (req, res) => {
       if (videos.length === 0) {
         return res.status(404).json({ error: 'No videos found for the provided ID' });
       }
-      res.json(videos);
+      res.status(200).json(videos);
     } catch (error) {
       console.error('Error fetching song details:', error);
       res.status(500).json({ error: error.message });
