@@ -44,3 +44,13 @@ POST /api/music/search
 | Body | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `query`      | `string` | **Require**. Name of song 
+
+---------------------------------------
+
+<b> Play songs: </b>
+```http
+POST /api/music/play
+```
+| Body | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Require**. id of song 
