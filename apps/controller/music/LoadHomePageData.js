@@ -8,14 +8,14 @@ const LoadHomePageData = async (req, res) => {
         chart: 'mostPopular',
         regionCode: 'US', // Mã vùng Hoa Kỳ
         videoCategoryId: '10', // Music category ID
-        maxResults: 5, // Số lượng video muốn lấy từ Hoa Kỳ
+        maxResults: 20, // Số lượng video muốn lấy từ Hoa Kỳ
       }),
       youtube.youtube.videos.list({
         part: 'snippet,contentDetails',
         chart: 'mostPopular',
         regionCode: 'VN', // Mã vùng Việt Nam
         videoCategoryId: '10', // Music category ID
-        maxResults: 5, // Số lượng video muốn lấy từ Việt Nam
+        maxResults: 20, // Số lượng video muốn lấy từ Việt Nam
       })
     ]);
 
