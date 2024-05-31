@@ -26,7 +26,7 @@ async function PlayMusicById(id, res) {
 
 const PlayMusic = async (req, res) => {
   try {
-    const id = req.body.id || '';
+    const id = req.body.query || '';
     if (!id) {
       return res.status(400).json({ error: 'No video ID provided' });
     }

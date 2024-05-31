@@ -11,6 +11,6 @@ router.get("/", LoadHomePageData);
 router.post("/song", DetailSong);
 router.post("/search", SearchSongs);
 
-router.post("/play", PlayMusic);
+router.get("/play/:id", PlayMusic);
 
 module.exports = router;
